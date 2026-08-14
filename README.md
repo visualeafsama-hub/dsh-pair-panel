@@ -24,7 +24,7 @@ dsh plugin --profile web add <dsh-pair-panel 路径或 git url>
 | 依赖 | 用途 | 必需 | 获取 |
 | --- | --- | --- | --- |
 | [agentbridge-dsh](https://github.com/visualeafsama-hub/agentbridge-dsh) | MCP 适配器（`http://127.0.0.1:8765/mcp`）、attach 席位、pair 状态、Codex rollout、推送通知钩子 | **是** | `git clone https://github.com/visualeafsama-hub/agentbridge-dsh.git` |
-| agent-bridge | Claude Code ↔ Codex 双向桥（agentbridge-dsh 的底层） | 是 | https://github.com/raysonmeng/agent-bridge |
+| [agent-bridge](https://github.com/raysonmeng/agent-bridge) | Claude Code ↔ Codex 双向桥（agentbridge-dsh 的底层） | 是 | GitHub: https://github.com/raysonmeng/agent-bridge · 文档: https://raysonmeng.github.io/agent-bridge/zh/ |
 | DSH web | 宿主界面（通过 `abg dsh` 拉起） | 是 | https://github.com/deepseek-ai/dsh |
 | [dsh-deep-whale / maid-atelier](https://github.com/Small-tailqwq/dsh-deep-whale) | 左右鲸鱼娘角色与布局适配（皮肤，**第三方仓库**） | 否 | `git clone https://github.com/Small-tailqwq/dsh-deep-whale.git`，皮肤许可见其仓库 |
 

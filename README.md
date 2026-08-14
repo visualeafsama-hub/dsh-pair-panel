@@ -2,6 +2,11 @@
 
 DSH Web GUI 插件：**Codex 对端面板** —— 与 DSH 会话并排显示 agentbridge 对端（Codex）的实时状态、上下文用量与消息流。
 
+> ### 🔌 配套适配器：[agentbridge-dsh](https://github.com/visualeafsama-hub/agentbridge-dsh)
+> 本插件的运行时依赖：提供 MCP 适配器（`http://127.0.0.1:8765/mcp`）、attach 席位、
+> pair 状态读取、Codex rollout 解析与推送通知钩子。本仓库只负责面板 UI 与数据加工，
+> 底层通信全部由 agentbridge-dsh 完成。
+
 - 仅 `abg dsh --pair <name>` 启动的 DSH web 生效；普通 `dsh web` 完全无感。
 - 面板紧贴 DSH 输入框右侧，左右鲸鱼娘保持原位、互不遮挡。
 - 支持浅色/深色主题（跟随 `data-ds-dark-theme`）。

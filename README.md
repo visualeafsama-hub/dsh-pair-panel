@@ -29,7 +29,10 @@ dsh plugin --profile web add <dsh-pair-panel 路径或 git url>
 | [dsh-deep-whale / maid-atelier](https://github.com/Small-tailqwq/dsh-deep-whale) | 左右鲸鱼娘角色与布局适配（皮肤，**第三方仓库**） | 否 | `git clone https://github.com/Small-tailqwq/dsh-deep-whale.git`，皮肤许可见其仓库 |
 
 > **安装顺序**：先装 `agentbridge-dsh`（提供 MCP 与推送），再装本插件，最后可选装皮肤。
-> 无皮肤时面板仍完整工作，仅无鲸鱼娘角色与布局适配。
+>
+> **皮肤不是必须的**：无皮肤时面板完整可用——消息流、上下文仪表、开关、主题全部正常。
+> 皮肤只提供两个增强：① 右鲸鱼作为面板锚点（无皮肤时自动回退到「视口右侧 480px 估算」，
+> 面板仍与会话并排）；② 左鲸鱼缩小避让（无皮肤时没有鲸鱼可避让，自然跳过）。
 
 路径均为相对会话工作区推导（`/.local/state/agentbridge/pairs`、`/.codex/sessions`），无本机硬编码，可跨机器移植。
 

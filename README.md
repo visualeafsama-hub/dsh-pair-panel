@@ -45,9 +45,36 @@ dsh plugin --profile web add <dsh-pair-panel 路径或 git url>
 
 ## 布局说明
 
-- 面板位置：锚定右侧鲸鱼左缘，`PANEL_SHIFT`（默认 110px）整体左移面板与会话列。
-- 左鲸鱼：`adjustLeftMaid()` 缩至 `min(62vh, 800px)`，避免遮挡会话气泡。
+- 面板位置：有 maid-atelier 皮肤时锚定右侧鲸鱼的**契约化最终位置**（皮肤 active 规则
+  `right: clamp(-70px,-3vw,-24px); height: clamp(420px,62vh,730px)` 的确定性计算结果，
+  不测量实时 DOM——实时矩形会停留在英雄尺寸数秒后才跳到 active 尺寸，测量式锚点会造成
+  会话列抖动），`PANEL_SHIFT`（默认 110px）整体左移面板与会话列。
+- 会话列 margin **只写一次**，先决条件（输入框已挂载、列存在）不满足时保持 pending，
+  绝不写"空值回退 margin"（那正是 F5 / 新会话切老会话弹跳的根因）。
+- 左鲸鱼：保持皮肤原位置与原尺寸（面板开关不影响她），只做原生几何恢复。
 - 右鲸鱼：保持皮肤原位，面板与其保持 16px+ 间隙。
+- 无皮肤时自动回退「视口右侧 610px 预留」，面板仍与会话并排，完整可用。
+
+## 皮肤兼容性
+
+| 皮肤 | 状态 | 说明 |
+| --- | --- | --- |
+| [dsh-deep-whale / maid-atelier](https://github.com/Small-tailqwq/dsh-deep-whale) | ✅ 完整适配 | 右侧鲸鱼契约锚点 + 左侧鲸鱼保持原位，见上文布局说明 |
+| [dsh-web-ui 全家桶](https://github.com/zhu1090093659/dsh-web-ui)（whale-mom 鲸鱼妈妈 / whale-song 鲸吟 等 13 款 + dsh-pet 宠物） | ✅ 天然兼容，零改动 | 见下 |
+
+**dsh-web-ui 集合**（Apache-2.0）的鲸鱼皮肤与 maid-atelier 完全不同：它们是全视口
+背景画（base64 内嵌，垫在半透明面板之下），只做 token 级透明度映射，**不注入
+`[data-maid-character]` 元素、不改布局**（README 明示"与面板布局无关"，且刻意不用
+`backdrop-filter`——避免固定定位浮层被包含块困住）。因此：
+
+- 面板自动走无皮肤回退路径（视口右侧 610px 预留），消息流、仪表、开关、主题全部正常。
+- 它们不写 centerCol 的 margin/transition，与我们的单次 margin 提交和
+  `transition: none !important` 无冲突。
+- 本插件的通用修复（`.md-code-block [class*='bannerWrap'] { z-index: 0 !important }`
+  等）对任何皮肤无害。
+- 注意点：① `dsh-pet` 的宠物是 `position: fixed` 可拖动，拖到输入框右侧可能盖住面板，
+  属用户摆放问题，非结构冲突；② whale-song 的画作鲸群居左，会被会话列遮住一部分，
+  纯视觉，不影响布局计算。
 
 ## 文件
 

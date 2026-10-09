@@ -6,7 +6,7 @@
 
 ### `2ca79ae` — pair 解析：桥标记优先，不再全局乱跳
 - 宿主 `findPair` 原来**全局扫所有 pair 取 current-thread.json 最新**，不认当前实例桥接的 pair——换个 abg 实例面板就会跳到别的 pair。
-- 现在优先级：① 桥标记 `~/agentbridge-dsh/run/bridge.pair`（abg 每次启动写入的实例真身）→ ② 会话工作区精确匹配的 live pair → ③ 任意 live pair → ④ 最新。
+- 现在优先级：① 桥标记 `~/.local/state/agentbridge/dsh/bridge.pair`（abg 每次启动写入的实例真身）→ ② 会话工作区精确匹配的 live pair → ③ 任意 live pair → ④ 最新。
 - 附带：`deriveCwd` 把会话完整 cwd 传给 findPair 做工作区匹配。
 
 ### `66e66b2` — 消息去重 + 统一左侧对齐
